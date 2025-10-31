@@ -2,9 +2,10 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, Loader2 } from "lucide-react";
+import { Send, Loader2, Sparkles } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useGeolocation } from "@/hooks/useGeolocation";
 
 interface Message {
   role: 'user' | 'assistant';
@@ -22,6 +23,7 @@ const ChatInterface = ({ mode, image }: ChatInterfaceProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+  const location = useGeolocation();
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -38,11 +40,16 @@ const ChatInterface = ({ mode, image }: ChatInterfaceProps) => {
     setIsLoading(true);
 
     try {
+      const locationInfo = !location.loading && !location.error 
+        ? { city: location.city, region: location.region, country: location.country }
+        : null;
+
       const { data, error } = await supabase.functions.invoke('eco-chat', {
         body: { 
           messages: [...messages, userMessage],
           mode,
-          image
+          image,
+          location: locationInfo
         }
       });
 
@@ -75,12 +82,17 @@ const ChatInterface = ({ mode, image }: ChatInterfaceProps) => {
       <ScrollArea className="flex-1 pr-4" ref={scrollRef}>
         <div className="space-y-4">
           {messages.length === 0 && (
-            <div className="text-center py-8 text-muted-foreground">
-              <p className="text-lg mb-2">👋 Hello! I'm your EcoAssistant</p>
-              <p className="text-sm">
+            <div className="text-center py-12 text-muted-foreground animate-fade-in">
+              <div className="inline-block mb-4 animate-float">
+                <Sparkles className="w-12 h-12 text-primary" />
+              </div>
+              <p className="text-xl mb-3 font-semibold text-foreground">
+                👋 Welcome to EcoAssistant
+              </p>
+              <p className="text-sm max-w-md mx-auto">
                 {mode === 'eco-chat' 
-                  ? "Ask me about recycling, energy saving, or sustainable living tips!"
-                  : "Upload a leaf image and I'll provide detailed plant information!"}
+                  ? "Ask me about recycling, energy saving, or sustainable living tips tailored to your location!"
+                  : "Upload a leaf image and I'll provide detailed botanical analysis and plant health assessment!"}
               </p>
             </div>
           )}
@@ -88,16 +100,16 @@ const ChatInterface = ({ mode, image }: ChatInterfaceProps) => {
           {messages.map((message, index) => (
             <div
               key={index}
-              className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+              className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in`}
             >
               <div
-                className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                className={`max-w-[80%] rounded-2xl px-4 py-3 shadow-soft ${
                   message.role === 'user'
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted'
+                    ? 'bg-primary text-primary-foreground glow-border'
+                    : 'bg-card border border-border'
                 }`}
               >
-                <p className="whitespace-pre-wrap text-sm">{message.content}</p>
+                <p className="whitespace-pre-wrap text-sm leading-relaxed">{message.content}</p>
               </div>
             </div>
           ))}

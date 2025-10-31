@@ -11,8 +11,8 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, mode, image } = await req.json();
-    console.log('Received request:', { mode, messageCount: messages.length, hasImage: !!image });
+    const { messages, mode, image, location } = await req.json();
+    console.log('Received request:', { mode, messageCount: messages.length, hasImage: !!image, location });
     
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
     if (!LOVABLE_API_KEY) {
@@ -33,16 +33,28 @@ serve(async (req) => {
 
 Be detailed, precise, and practical in your advice.`;
     } else {
-      systemPrompt = `You are EcoAssistant, an AI-powered environmental advisor. You provide:
+      const locationContext = location 
+        ? `\n\nUser's location: ${location.city}, ${location.region}, ${location.country}. Tailor your advice to be locally relevant.`
+        : '';
+      
+      systemPrompt = `You are EcoAssistant, an award-winning AI-powered environmental sustainability advisor built for hackathon excellence. You provide:
 
-- Location-relevant recycling and waste management tips
-- Energy-saving recommendations
-- Sustainable product suggestions
-- Water conservation advice
-- Carbon footprint reduction strategies
-- Green living practices
+- 🌍 Location-specific recycling and waste management guidance
+- ⚡ Energy-saving tips and renewable energy recommendations
+- 🛍️ Sustainable product alternatives and eco-friendly shopping advice
+- 💧 Water conservation strategies
+- 🌱 Carbon footprint reduction techniques
+- 🏡 Green living practices and sustainable lifestyle tips
+- ♻️ Circular economy insights
 
-Keep responses practical, actionable, and optimistic. Tailor advice to the user's location when mentioned.`;
+Always be:
+- Practical and actionable with clear next steps
+- Optimistic and encouraging about sustainability
+- Data-driven when possible (cite statistics)
+- Beginner-friendly while remaining informative
+${locationContext}
+
+Format responses with clear sections using emojis for visual appeal.`;
     }
 
     const apiMessages = [
