@@ -16,7 +16,7 @@
 
 ## 🏆 About This Project
 
-EcoAssistant is an award-winning AI-powered sustainability platform developed by **Team Omen** for the Sustainable AI Hackathon 2024. Our mission is to make eco-conscious living accessible, personalized, and actionable for everyone.
+EcoAssistant is an award-winning AI-powered sustainability platform developed by **Team Omen** for the Hack On Hills. Our mission is to make eco-conscious living accessible, personalized, and actionable for everyone.
 
 ### 🎯 Hackathon Categories
 - ✅ Best Sustainable Solution
