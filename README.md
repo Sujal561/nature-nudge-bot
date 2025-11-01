@@ -175,15 +175,12 @@ Empower individuals to make sustainable choices through accessible AI technology
 Team Omen came together with a shared passion for environmental sustainability and cutting-edge AI technology. As students and emerging developers, we believe technology should serve the planet, not harm it.
 
 ### Team Members
-- **[Your Name]** - Full Stack Developer & AI Integration
-- **[Team Member 2]** - UI/UX Design & Frontend
-- **[Team Member 3]** - Backend Architecture & DevOps
-- **[Team Member 4]** - Data Science & AI Modeling
+- Sujal Thakur - Full Stack Developer & AI Integration
+- Yugank Sharma - UI/UX Design & Frontend
+- Saksham Sharma - Backend Architecture & DevOps
+- Sujal Thakur - Data Science & AI Modeling
 
-### Connect With Us
-- GitHub: [@team-omen](https://github.com/team-omen)
-- Email: contact@teamomen.dev
-- Twitter: [@TeamOmenDev](https://twitter.com/TeamOmenDev)
+
 
 ---
 
@@ -242,18 +239,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📞 Support
-
-Having issues? We're here to help!
-
-- 📧 Email: support@teamomen.dev
-- 💬 Discord: [Join our server](https://discord.gg/teamomen)
-- 🐛 Issues: [GitHub Issues](https://github.com/team-omen/ecoassistant/issues)
-- 📖 Docs: [Full Documentation](https://docs.teamomen.dev)
-
----
-
-<div align="center">
 
 **Made with 💚 by Team Omen**
 
