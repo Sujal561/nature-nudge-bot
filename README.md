@@ -61,7 +61,7 @@ Real-time geolocation for hyper-relevant eco-advice:
 - **Shadcn/ui** - Premium component library
 
 ### Backend & AI
-- **Lovable Cloud** - Serverless backend infrastructure
+- **Team Omen Cloud** - Serverless backend infrastructure
 - **Google Gemini 2.5 Flash** - Advanced AI model
 - **Edge Functions** - Scalable serverless compute
 - **Supabase** - Real-time database & authentication
