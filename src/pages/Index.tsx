@@ -26,13 +26,10 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center px-4 animate-fade-in">
-            <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 glow-border">
-              <Award className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Hackathon 2024 Winner</span>
-              <Sparkles className="w-4 h-4 text-accent" />
-            </div>
-            <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-medium mb-4">
-              By Team Omen
+            <div className="inline-flex items-center gap-3 mb-6 px-8 py-4 rounded-full bg-primary/20 border-2 border-primary/50 glow-border">
+              <Sparkles className="w-6 h-6 text-accent" />
+              <span className="text-2xl md:text-3xl font-bold text-primary tracking-wide">BY TEAM OMEN</span>
+              <Sparkles className="w-6 h-6 text-accent" />
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-4 drop-shadow-2xl">
               <span className="text-primary">Eco</span>Assistant
